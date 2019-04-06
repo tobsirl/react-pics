@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import dotenv from 'dotenv';
 
 import SearchBar from './SearchBar';
+import unsplash from '../api/unsplash';
 
 dotenv.config();
 
@@ -11,19 +11,16 @@ class App extends Component {
     images: []
   };
 
-  async onSubmitSearch(term){
+  onSubmitSearch = async term => {
     // const { URL, ACCESS_TOKEN } = process.env;
-    const response = await axios.get(`https://api.unsplash.com/search/photos`, {
-      params: { query: term },
-      headers: {
-        Authorization: `Client-ID 69f8a965f8ea12b3ccb3d856257a389343332bdb57564efd91c73985efce0058`
-      }
+    const response = await unsplash.get(`/search/photos`, {
+      params: { query: term }
     });
 
     console.log(response.data.results);
     console.log(this);
     this.setState({ images: response.data.results });
-  }
+  };
 
   render() {
     return (
