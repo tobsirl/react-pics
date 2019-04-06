@@ -11,17 +11,18 @@ class App extends Component {
     images: []
   };
 
-  async onSubmitSearch(term) {
+  async onSubmitSearch(term){
     // const { URL, ACCESS_TOKEN } = process.env;
-    const responce = await axios.get(`https://api.unsplash.com/search/photos`, {
+    const response = await axios.get(`https://api.unsplash.com/search/photos`, {
       params: { query: term },
       headers: {
         Authorization: `Client-ID 69f8a965f8ea12b3ccb3d856257a389343332bdb57564efd91c73985efce0058`
       }
     });
 
-    console.log(responce.data.results);
-    this.setState({ images: responce.data.results });
+    console.log(response.data.results);
+    console.log(this);
+    this.setState({ images: response.data.results });
   }
 
   render() {
