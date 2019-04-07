@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dotenv from 'dotenv';
 
 import SearchBar from './SearchBar';
-import ImageList from './ImageList';
+import ImageList from './ImageList/ImageList';
 import unsplash from '../api/unsplash';
 
 dotenv.config();
